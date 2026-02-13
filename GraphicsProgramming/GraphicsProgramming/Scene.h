@@ -15,12 +15,13 @@
 // Further includes should go here:
 #include "SOIL.h"
 #include <vector>
+#include <math.h>
 
 
-class Scene{
+class Scene {
 
 public:
-	Scene(Input *in);
+	Scene(Input* in);
 	// Main render function
 	void render();
 	// Handle input function that receives delta time from parent.
@@ -29,6 +30,23 @@ public:
 	void update(float dt);
 	// Resizes the OpenGL output based on new window size.
 	void resize(int w, int h);
+
+	//keeping the code clean so im placing planet rotations here
+	float sunRot = 0.0f;
+	float mercuryRot = 0.0f;
+	float venusRot = 0.0f;
+	float earthRot = 0.0f;
+	float marsRot = 0.0f;
+	float jupiterRot = 0.0f;
+	float saturnRot = 0.0f;
+	float uranusRot = 0.0f;
+	float neptuneRot = 0.0f;
+
+	//and then ill place moon rotations here
+	float earthMoonRot = 0.0f;
+	float neptuneMoon1Rot = 0.0f;
+	float neptuneMoon2Rot = 0.0f;
+	float neptuneMoonMoonRot = 0.0f;
 
 protected:
 	// configure opengl render pipeline
@@ -40,11 +58,11 @@ protected:
 	void calculateFPS();
 
 	// draw primitive functions
-	
+	void drawOrbit(float radius);
 
 	// For access to user input.
 	Input* input;
-		
+
 	// For Window and frustum calculation.
 	int width, height;
 	float fov, nearPlane, farPlane;
